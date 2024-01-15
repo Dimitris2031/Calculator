@@ -1,0 +1,32 @@
+.calculatorScreen{
+    height: 300px;
+    width: 400px;
+    background-color: blue;
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 75px;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator{
+    height: 600px;
+    width: 400px;
+    border: 2px solid black;
+}
+
+button{
+    height: 75px;
+    width: 75px;
+}
+
+.keyboard{
+    display: flex;
+    justify-content: space-between;
+}
