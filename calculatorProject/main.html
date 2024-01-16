@@ -2,34 +2,32 @@
     <head>
         <title>Calculator</title>
         <link rel="stylesheet" href="styles/main.css">
+        
     </head>
     <body>
         <div class="calculator">
             <div class="calculatorScreen"></div>
 
             <div class="keyboard">
-                <div class="numbers">
-                    <button class = "number">9</button>
-                    <button class = "number">8</button>
-                    <button class = "number">7</button>
-                    <button class = "number">6</button>
-                    <button class = "number">5</button>
-                    <button class = "number">4</button>
-                    <button class = "number">3</button>
-                    <button class = "number">2</button>
-                    <button class = "number">1</button>
-                    <button class = "number">0</button>
-                    <button>.</button>
-                </div>
-                <div class="operations">
-                    <button onclick="divide()" > (÷) </button>
-                    <button onclick="multiply()" > X </button>
-                    <button onclick="subtract()" > - </button>
-                    <button onclick="add()" > + </button>
-                    <button onclick="equal()" > = </button>
-                    <button>Clear All</button>
-                    <button>Erase</button>
-                </div>
+                    <button onclick="remove(true)">AC</button>
+                    <button onclick="remove()">C</button>
+                    <button onclick="keyPressed(('%'))" > % </button>
+                    <button onclick="keyPressed(('÷'))" > (÷) </button>
+                    <button onclick="keyPressed(7)"> 7 </button>
+                    <button onclick="keyPressed(8)"> 8 </button>
+                    <button onclick="keyPressed(9)"> 9 </button>
+                    <button onclick="keyPressed('+')"> + </button>
+                    <button onclick="keyPressed(4)"> 4 </button>
+                    <button onclick="keyPressed(5)"> 5 </button>
+                    <button onclick="keyPressed(6)"> 6 </button>
+                    <button onclick="keyPressed('-')" > - </button>
+                    <button onclick="keyPressed(1)"> 1 </button>
+                    <button onclick="keyPressed(2)"> 2 </button>
+                    <button onclick="keyPressed(3)"> 3 </button>
+                    <button onclick="keyPressed(('X'))" > X </button>
+                    <button onclick="keyPressed(0)"> 0 </button>
+                    <button onclick="keyPressed('.')">.</button>
+                    <button class="equals" onclick="operate()"> = </button>
             </div>
         </div>
         <script src="main.js"></script>
