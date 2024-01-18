@@ -1,43 +1,47 @@
 
 let screen = document.querySelector('.calculatorScreen');
-let validator = false;
+let validator = 0;
 let numStorage = [];
 let operator = "";
 let num1;
 let num2;
+let counter = 0;
+let upDate;
+let buttons = document.querySelectorAll('.button');
+let secondCalculationCheck = 0;
 
-function add (a,b) {
-    let result = a+b;
-    return result;
-}
+buttons.forEach(button =>{
+    button.addEventListener('click',function(){
+        button.style.transform = 'scale(0.90)';
 
-function subtract (a,b) {
-    let result = a-b;
-    return result;
-}
+        setTimeout(function(){
+            button.style.transform = 'scale(1)';
 
-function multiply (a,b) {
-    let result = a*b;
-    return result;
-}
+        },200);
+    });
+});
 
-function divide (a,b) {
-    let result = a/b;
-    return result;
-}
+let operators = {
+    '+':'+',
+    '-':'-',
+    'X':'X',
+    '÷':'÷',
+};
 
+const add = (a,b) => a + b;
 
+const subtract = (a,b) => a-b;
 
+const multiply = (a,b) => a*b;
 
-
+const divide = (a,b) => a/b;
 
 function operate(){
-    let length = numStorage.length;
-
-    for (let i = 0; i < length; i++) {
-        let currentElement = numStorage[i];
+    counter++;
     
-        if (currentElement === '+' || currentElement === '-' || currentElement === 'X' || currentElement === '÷') {
+    for (let i = 0; i < numStorage.length; i++) {
+
+        if (numStorage[i] in operators ) {
             num1 = numStorage.slice(0 , i);
             num2 = numStorage.slice(i + 1);
             break;
@@ -54,64 +58,61 @@ function operate(){
     console.log("num2:", num2String);
 
     
-
-    if (operator == "+"){
-        let upDate = add (INTnum1,INTnum2);
-        screen.innerHTML = upDate; 
-        numStorage = [];
-        INTnum1 = INTnum2 = null;
-
-    }else if (operator == "-"){
-        let upDate = subtract (INTnum1,INTnum2);
-        screen.innerHTML = upDate;
-        numStorage = []; 
-        INTnum1 = INTnum2 = null;
-        
-
-    }else if (operator == "X"){
-        let upDate = multiply (INTnum1,INTnum2);
-        screen.innerHTML = upDate;
-        numStorage = [];
-        INTnum1 = INTnum2 = null;
-       
-
-    }else if (operator =="÷"){
-        let upDate = divide (INTnum1,INTnum2);
-        screen.innerHTML = upDate;
-        numStorage = [];
-        INTnum1 = INTnum2 = null;
-        
+    if (counter > 1){
+        INTnum1 = upDate;
     }
-    validator = true;
+
+    if(counter){
+        if (operator == "+"){
+            console.log(INTnum1);
+            upDate = add (INTnum1,INTnum2);
+            console.log(upDate);
+    
+        }else if (operator == "-"){
+            upDate = subtract (INTnum1,INTnum2);
+    
+        }else if (operator == "X"){
+            upDate = multiply (INTnum1,INTnum2);
+    
+        }else if (operator =="÷"){
+            upDate = divide (INTnum1,INTnum2);
+        }
+    }
+    numStorage = [];
+    INTnum1 = INTnum2 = null;
+    screen.innerHTML = upDate;
 }
 
 
-
 function keyPressed(number){
-    if (number == '+' || number == '-' || number == 'X' || number == '÷'){
+    if (number in operators){
         numStorage.push(number);
         operator = number;
         console.log(numStorage);
         screen.innerHTML+=number;
+        validator++;
+    console.log(validator);
     }else{
         numStorage.push(number);
         console.log(numStorage);
         screen.innerHTML+=number;
     }
+    if (typeof numStorage[0] === "number" && typeof numStorage[1] === "string" && typeof numStorage[2] === "number" && typeof numStorage[3] ==="string"){
+        console.log("in");
+        operate();
 
-    
-
-    
+    }
 }
 
 function remove(bool){
-    if (bool ==true){
-        screen.innerHTML = screen.innerHTML.replace(/[0-9]/g, "");
+    if (bool == true){
+        screen.innerHTML = "";
         numStorage = [];
+        counter = 0;
     }else{
-        let length = numStorage.length-1;
+        let length = numStorage.length-1;                                           
         numStorage.pop(length);
-        screen.innerHTML = screen.innerHTML.replace(/[0-9](?=[^0-9]*$)/, "");
+        screen.innerHTML = screen.innerHTML.replace(/.$/,"");
     }
 }
 

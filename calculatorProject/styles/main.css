@@ -1,14 +1,15 @@
 .calculatorScreen{
-    height: 120px;
+    min-height: 120px;
+    max-height: 1000px;
     width: 100%;
     background-color: #383838;
-    color: #FFFDD0; /* Adjust the hue and lightness as needed */
+    color: #FFFDD0;
     font-size: 75px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: auto;
-    border-bottom: 2px solid orange;
+    flex-wrap: wrap;
+    overflow: hidden;
+    border-bottom: 2.5px solid orange;
     font-family: 'Bangers', cursive;
 
 }
@@ -37,6 +38,7 @@ button{
     font-size: 30px;
     border-radius: 20px;
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
 }
 
 button:hover{
@@ -44,6 +46,8 @@ button:hover{
     transition: 0.3s;
     transform: translateY(-2px);
 }
+
+
 
 .keyboard{
     display: flex;
@@ -56,3 +60,4 @@ button:hover{
     height: 75px;
     width: 160px;
 }
+
